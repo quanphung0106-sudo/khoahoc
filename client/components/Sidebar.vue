@@ -98,7 +98,7 @@ const list = [
     color: #008000;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1279px) {
     #sidebar {
         width: 100%;
     }

@@ -3,10 +3,14 @@
         <div class="header">
             <div class="header__top">
                 <div class="header-logo">
-                    <div class="min-[480px]:hidden cursor-pointer" @click="handleShowInputField"><i
+                    <div v-if="!showInputField" class="header-logo__search cursor-pointer" @click="handleShowInputField"><i
                             class="material-icons">search</i>
                     </div>
-                    <div class="header-logo_content">
+                    <div v-if="showInputField" class="header-logo__search p-[10px] cursor-pointer" @click="handleShowInputField"><i
+                            class="material-icons">close</i>
+                    </div>
+
+                    <div v-if="!showInputField" class="header-logo_content">
                         <div class="max-[479px]:hidden">
                             <img src="https://khoahoc.tv/themes/default/images/logo.png" alt="logo">
                         </div>
@@ -14,7 +18,7 @@
                             <img src="https://khoahoc.tv/themes/default/images/logo.white.png" alt="logo">
                         </div>
                     </div>
-                    <van-cell class="header-popup__action" @click="showPopup">
+                    <van-cell v-if="!showInputField" class="header-popup__action" @click="showPopup">
                         <i class="material-icons">list</i></van-cell>
                     <van-popup :position="resElement >= 479 ? 'center' : 'left'"
                         :class="resElement >= 479 ? 'header-popup' : 'header-popup__sm'"
@@ -24,11 +28,9 @@
                                 :title="item.title" :to="item.path" />
                         </van-list>
                     </van-popup>
-                    <!-- <van-cell-group :show="showInputField" class="min-[480px]:hidden header-field__sm" inset>
-                        <van-field class="header-field__input" v-model="sms" center clearable
-                            placeholder="Được cải tiến bởi Google">
-                        </van-field>
-                    </van-cell-group> -->
+                    <van-field v-show="showInputField" class="header-field__input" v-model="sms" center clearable
+                        placeholder="Được cải tiến bởi Google">
+                    </van-field>
                 </div>
                 <van-cell-group class="header-field" inset>
                     <van-field class="header-field__input" v-model="sms" center clearable
@@ -159,8 +161,12 @@ onMounted(() => {
 
 }
 
+.header-logo__search {
+    display: none;
+}
+
 @media only screen and (max-width: 1023px) {
-    .header{
+    .header {
         padding: 0 20px;
     }
 }
@@ -226,10 +232,16 @@ onMounted(() => {
     }
 }
 
+
+
 @media screen and (max-width: 479px) {
     .header {
         background-color: #00796b;
         padding: 5px;
+    }
+
+    .header-logo__search {
+        display: flex;
     }
 
     .header-field {
@@ -247,6 +259,8 @@ onMounted(() => {
     .header-logo {
         flex-direction: row-reverse;
     }
+
+
 
     .header-popup__action {
         padding: 0;

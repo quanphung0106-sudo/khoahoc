@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
     modules: [
         '@nuxtjs/tailwindcss',
-        '@vant/nuxt'
+        '@vant/nuxt',
+        'nuxt-swiper'
     ],
     css: [
         // 'tailwindcss/dist/tailwind.min.css',

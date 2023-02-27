@@ -1,46 +1,55 @@
 <template>
     <div>
-        <div class="pt-12">
-            <h1 class="text-center text-black text-5xl font-semibold mb-5">Live everywhere</h1>
-            <h2 class="text-center font-light text-xl text-gray-500 mb-10">Keep calm & travel on</h2>
-        </div>
-        <div class="grid grid-cols-3 gap-x-6 max-w-6xl mx-auto">
-            <div>
-                <div class="h-96 mb-5"><img
-                        src="https://img.freepik.com/free-photo/young-woman-teaching-kids-english-class-online_23-2148962943.jpg?w=1060&t=st=1677450657~exp=1677451257~hmac=8ab21fcad95add89040f5b08f7c0b022de48ba8ea7b61e21c199d4220cad2f2a"
-                        alt=""
-                        class="w-full h-full rounded-sm object-cover"
->
-                    <h3 class="text-center font-medium text-lg mb-3">Enjoy everything</h3>
-                    <span class="text-center">6,89 properties</span>
-                </div>
-            </div>
-            <div>
-                <div class="h-96 mb-5"><img
-                        src="https://img.freepik.com/free-photo/young-woman-teaching-kids-english-class-online_23-2148962943.jpg?w=1060&t=st=1677450657~exp=1677451257~hmac=8ab21fcad95add89040f5b08f7c0b022de48ba8ea7b61e21c199d4220cad2f2a"
-                        alt=""
-                        class="w-full h-full rounded-sm object-cover"
->
-                    <h3 class="text-center font-medium text-lg mb-3">Enjoy everything</h3>
-                    <span class="text-center">6,89 properties</span>
-                </div>
-            </div>
-            <div>
-                <div class="h-96 mb-5"><img
-                        src="https://img.freepik.com/free-photo/young-woman-teaching-kids-english-class-online_23-2148962943.jpg?w=1060&t=st=1677450657~exp=1677451257~hmac=8ab21fcad95add89040f5b08f7c0b022de48ba8ea7b61e21c199d4220cad2f2a"
-                        alt=""
-                        class="w-full h-full rounded-sm object-cover"
->
-                    <h3 class="text-center font-medium text-lg mb-3 text-[#ffa400]">Enjoy everything</h3>
-                    <span class="text-center">6,89 properties</span>
-                </div>
-            </div>
-        </div>
+        <Slider/>
+        <Card :list="list" />
     </div>
 </template>
 
 <script setup>
-
+const list = [
+    {
+        thumb: 'https://e.khoahoc.tv/photos/image/2023/02/23/sao-kim-200-size-80x80-znd.jpg',
+        title: 'Sao Kim gần Trái đất nhất, tại sao chúng ta không hạ cánh xuống sao Kim?',
+        desc: 'Mới đây, tại Nhật Bản, một công ty về công nghệ sinh học đã giới thiệu một loại gan ngỗng nhân tạo được sản xuất từ phòng thí nghiệm.',
+        path: '/#!'
+    },
+    {
+        thumb: 'https://e.khoahoc.tv/photos/image/2023/02/21/Einstein-and-Newton-200-size-80x80-znd.jpg',
+        title: 'Bộ não loài người đang nhỏ dần và tương lai sẽ khó xuất hiện thiên tài như Newton, Einstein',
+        desc: 'Mỹ đang đối mặt với sự “xâm lược” của những đàn “siêu lợn” lai giữa lợn rừng và lợn nuôi, khi mà những biện pháp kiểm soát trước đây đều không hiệu quả.',
+        path: '/#!'
+    },
+    {
+        thumb: 'https://e.khoahoc.tv/photos/image/2019/08/08/loai-ho-200-size-80x80-znd.jpg',
+        title: 'Giới thiệu về loài hổ và con hổ to nhất thế giới',
+        desc: 'Các nhà nghiên cứu thiết kế máy phát điện nano mạnh nhất từ trước tới nay với điện áp 3.000 volt, mô phỏng cách cá đuối phóng điện để tự vệ.',
+        path: '/#!'
+    },
+    {
+        thumb: 'https://e.khoahoc.tv/photos/image/2023/02/22/chim-bach-thanh-tan-cong-ran-200-size-80x80-znd.jpg',
+        title: 'Loài chim sát thủ chọc mù mắt và hạ gục rắn độc Châu Phi trong chớp mắt',
+        desc: 'Các nhà nghiên cứu không ngờ lại có thể quay được cảnh tượng này ở nghĩa địa cá voi dưới đáy Nam Cực.',
+        path: '/#!'
+    },
+    {
+        thumb: 'https://e.khoahoc.tv/photos/image/2023/02/18/bao-bay-nguoi-bat-linh-duong-200-size-80x80-znd.jpg',
+        title: 'Video: Báo hoa mai bay người lên không trung bắt linh dương và cái kết',
+        desc: 'Y đức là phẩm chất tốt đẹp của người làm công tác y tế, được biểu hiện ở tinh thần trách nhiệm cao, tận tuỵ phục vụ, hết lòng thương yêu chǎm sóc người bệnh.',
+        path: '/#!'
+    },
+    {
+        thumb: 'https://e.khoahoc.tv/photos/image/2023/02/23/ty-phu-200-size-80x80-znd.jpg',
+        title: 'Khoa học lý giải vì sao chỉ cần nhìn khuôn mặt một người đủ biết họ có giàu hay không',
+        desc: 'Đây là danh sách các hiện tượng tự nhiên bất thường và hiếm gặp nhất mà chúng ta sẽ thấy trong thế kỷ này đã được các nhà thiên văn học dự đoán.',
+        path: '/#!'
+    },
+    {
+        thumb: 'https://e.khoahoc.tv/photos/image/2023/02/21/nong-noc-vu-tru-200-size-80x80-znd.jpg',
+        title: ' "Nòng nọc vũ trụ" làm lộ chân tướng vật thể khoa học không thể lý giải ',
+        desc: 'Các nhà nghiên cứu Trung Quốc đang chuẩn bị phóng gần 13.000 vệ tinh vào quỹ đạo tầm thấp của Trái đất như một phần kế hoạch thu gọn và có khả năng giám sát mạng Starlink.',
+        path: '/#!'
+    },
+];
 </script>
 
 <style lang="scss" scoped></style>

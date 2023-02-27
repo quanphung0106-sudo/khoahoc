@@ -5,12 +5,14 @@
             <!-- output the page content -->
             <main :class="`main-content main-content-${handleResponsive()} mx-auto grid`">
                 <Sidebar />
-                <div id="content" class="px-5">
+                <div id="content">
                     <slot />
                 </div>
                 <Rightbar />
             </main>
+            <Footer />
         </div>
+        <ScrollToTop />
     </div>
 </template>
 
@@ -22,19 +24,20 @@ const resElement = ref(null);
 onMounted(() => {
     resElement.value = window.innerWidth;
     window.addEventListener('resize', () => {
-        console.log(resElement.value)
         resElement.value = window.innerWidth;
     });
 });
 
 const handleResponsive = () => {
     switch (true) {
-        case resElement.value <= 1000 && resElement.value > 640:
+        case resElement.value <= 1279 && resElement.value > 1000:
             return 'lg';
-        case resElement.value <= 639 && resElement.value > 479:
+        case resElement.value <= 1000 && resElement.value > 640:
             return 'md';
-        case resElement.value <= 479 && resElement.value >= 0:
+        case resElement.value <= 640 && resElement.value > 479:
             return 'sm';
+        case resElement.value <= 479 && resElement.value >= 0:
+            return 'xs';
         default:
             return 'xl';
     }
@@ -47,13 +50,16 @@ const handleResponsive = () => {
 }
 
 .main-content {
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .main-content-xl {
     display: grid;
+    grid-template-columns: 200px 640px 300px;
     grid-template-areas:
         "sidebar content rightbar";
+    gap: 20px;
 }
 
 .main-content-lg {
@@ -61,25 +67,38 @@ const handleResponsive = () => {
     grid-template-areas:
         "content rightbar"
         "sidebar rightbar";
+    gap: 20px;
 
 }
 
 .main-content-md {
     display: grid;
     grid-template-areas:
-        "content"
-        "rightbar"
-        "sidebar";
+        "content rightbar"
+        "sidebar rightbar";
+    gap: 20px;
+    padding: 20px;
+
 }
 
 .main-content-sm {
     display: grid;
     grid-template-areas:
         "content"
-        "rightbar";
+        "rightbar"
+        "sidebar";
+    padding: 20px;
 }
 
-.main-content-sm #sidebar {
+.main-content-xs {
+    display: grid;
+    grid-template-areas:
+        "content"
+        "rightbar";
+    padding: 20px;
+}
+
+.main-content-xs #sidebar {
     display: none;
 }
 
@@ -97,15 +116,23 @@ const handleResponsive = () => {
     margin: 0 auto;
 }
 
-@media only screen and (max-width: 1279px) {
+@media only screen and (min-width: 1001px) and (max-width: 1279px) {
     .main-layout__wrapper {
         width: 1000px;
+    }
+
+    #content {
+        max-width: 640px;
     }
 }
 
 @media only screen and (max-width: 1023px) {
     .main-layout__wrapper {
         width: 100%;
+    }
+
+    #content {
+
     }
 }
 
