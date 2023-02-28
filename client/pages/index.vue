@@ -1,7 +1,9 @@
 <template>
     <div>
-        <Slider/>
-        <Card :list="list" />
+        <Slider />
+        <Readmore :list="list" :handleData="handleData">
+            <Card :list="cardList" />
+        </Readmore>
     </div>
 </template>
 
@@ -49,7 +51,18 @@ const list = [
         desc: 'Các nhà nghiên cứu Trung Quốc đang chuẩn bị phóng gần 13.000 vệ tinh vào quỹ đạo tầm thấp của Trái đất như một phần kế hoạch thu gọn và có khả năng giám sát mạng Starlink.',
         path: '/#!'
     },
+    {
+        thumb: 'https://e.khoahoc.tv/photos/image/2023/02/22/chim-bach-thanh-tan-cong-ran-200-size-80x80-znd.jpg',
+        title: 'Loài chim sát thủ chọc mù mắt và hạ gục rắn độc Châu Phi trong chớp mắt',
+        desc: 'Các nhà nghiên cứu không ngờ lại có thể quay được cảnh tượng này ở nghĩa địa cá voi dưới đáy Nam Cực.',
+        path: '/#!'
+    },
 ];
+
+const cardList = ref([])
+const handleData = (data) => {
+    cardList.value = data
+}
 </script>
 
 <style lang="scss" scoped></style>

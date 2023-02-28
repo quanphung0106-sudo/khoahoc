@@ -6,8 +6,8 @@
                     <div v-if="!showInputField" class="header-logo__search cursor-pointer" @click="handleShowInputField"><i
                             class="material-icons">search</i>
                     </div>
-                    <div v-if="showInputField" class="header-logo__search p-[10px] cursor-pointer" @click="handleShowInputField"><i
-                            class="material-icons">close</i>
+                    <div v-if="showInputField" class="header-logo__search p-[10px] cursor-pointer"
+                        @click="handleShowInputField"><i class="material-icons">close</i>
                     </div>
 
                     <div v-if="!showInputField" class="header-logo_content">
@@ -119,6 +119,10 @@ onMounted(() => {
     align-items: center;
     padding: 10px 0;
 
+}
+
+:deep .list-menu .van-cell:hover {
+    color: #ff0;
 }
 
 .header-popup__action {

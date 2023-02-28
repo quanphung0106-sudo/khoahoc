@@ -1,14 +1,15 @@
 <template>
     <div>
-        <NuxtLink v-for="data in list" :key="index" :href="data.path" class="card__link">
-            <van-card :title="data.title" :thumb="data.thumb" :desc="data.desc ? data.desc : ''" />
-        </NuxtLink>
+        <div class="card__container">
+            <NuxtLink v-for="(data, index) in list" :key="index" :href="data.path" class="card__link">
+                <van-card :title="data.title" :thumb="data.thumb" :desc="data.desc ? data.desc : ''" />
+            </NuxtLink>
+        </div>
     </div>
 </template>
-
+  
 <script setup>
-
-const { list } = defineProps(['list'])
+const { list } = defineProps(['list']);
 </script>
 
 <style  scoped>
@@ -36,21 +37,20 @@ const { list } = defineProps(['list'])
     line-height: 1.4;
     max-height: fit-content;
 }
+
 :deep .van-card .van-card__content .van-card__desc {
-   white-space: normal;
+    white-space: normal;
 }
 
 @media only screen and (max-width: 1000px) {
-    .van-card {
-    }
+    .van-card {}
 }
+
 @media only screen and (max-width: 639px) {
-    .van-card {
-    }
+    .van-card {}
 }
 
 @media only screen and (max-width: 479px) {
-    .van-card {
-    }
+    .van-card {}
 }
 </style>
