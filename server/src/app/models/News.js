@@ -24,6 +24,9 @@ const NewsSchema = new Schema(
     cat: {
       type: String,
     },
+    tag: {
+      type: String,
+    },
     rating: {
       type: Number,
     },

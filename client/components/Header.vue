@@ -28,8 +28,10 @@
                         :class="resElement >= 479 ? 'header-popup' : 'header-popup__sm'"
                         :closeable="resElement >= 479 ? true : false" close-icon="close" v-model:show="show">
                         <van-list class="list-menu list-menu__sm">
-                            <van-cell class="list-menu__item" :icon="item.icon" v-for="item in list" :key="item"
-                                :title="item.title" :to="item.path" />
+                            <van-cell class="list-menu__item" v-for="item in list" :key="item" :to="item.path">
+                                <i class="material-icons">{{ item.icon }}</i>
+                                <p>{{ item.title }}</p>
+                            </van-cell>
                         </van-list>
                     </van-popup>
                     <van-field v-show="showInputField" class="header-field__input" v-model="sms" center clearable
@@ -51,8 +53,10 @@
                 </div>
             </div>
             <van-list class="list-menu">
-                <van-cell class="list-menu__item" :icon="item.icon" v-for="item in list" :key="item" :title="item.title"
-                    :to="item.path" />
+                <van-cell class="list-menu__item" v-for="item in list" :key="item" :to="item.path">
+                    <i class="material-icons">{{ item.icon }}</i>
+                    <p>{{ item.title }}</p>
+                </van-cell>
             </van-list>
         </div>
 
@@ -61,39 +65,9 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-const list = [
-    {
-        icon: 'shop',
-        title: 'Trang chủ',
-        path: '/'
-    },
-    {
-        icon: 'shop',
-        title: 'Công nghệ',
-        path: '/cong-nghe'
-    },
-    {
-        icon: 'shop',
-        title: 'Đời sống',
-        path: '/doi-song'
-    },
-    {
-        icon: 'shop',
-        title: 'Khám phá khoa học',
-        path: '/kham-pha-khoa-hoc'
-    },
-    {
-        icon: 'card',
-        title: 'Khoa học vũ trụ',
-        path: '/khoa-hoc-vu-tru'
-    },
-    {
-        icon: 'shop',
-        title: '1001 bí ẩn',
-        path: '/1001-bi-an'
-    },
-];
+import { routes } from '../utils/seed-data/index.js'
 
+const list = routes.slice(0, 7)
 const show = ref(false);
 const showInputField = ref(false)
 const resElement = ref(null);
@@ -141,10 +115,23 @@ onMounted(() => {
 .header-field {
     border: 1px solid #00796b;
     margin: 0;
+    border-radius: 3px 0 0 3px;
 }
 
 .header-field__input {
-    padding: 3px;
+    padding: 0;
+    height: 30px;
+}
+
+:deep .header-field__input .van-button {
+    height: 33px;
+    border-radius: unset;
+}
+:deep .header-field__input .van-field__body input {
+    min-width: 300px;
+    max-width: 100%;
+    padding-left: 10px;
+    height: 100%;
 }
 
 .header-icon {
@@ -160,13 +147,30 @@ onMounted(() => {
     justify-content: flex-start;
 }
 
+.list-menu {
+    flex-wrap: wrap;
+    height: 40px;
+    overflow: hidden;
+}
+
 .list-menu__item {
     font-size: 17px;
     background-color: transparent;
     color: white;
     width: fit-content;
     cursor: pointer;
+}
 
+:deep .list-menu__item .van-cell__value {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 3px;
+    color: white;
+}
+
+:deep .list-menu__item .van-cell__value:hover {
+    color: #ff0;
 }
 
 .header-logo__search {

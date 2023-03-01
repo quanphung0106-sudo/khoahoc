@@ -16,13 +16,12 @@
 <script setup>
 import { ref } from 'vue'
 
-const { total, limit } = defineProps(['total', 'limit', 'getData'])
+const { total, limit, tag } = defineProps(['total', 'limit', 'tag'])
 const currentPage = ref(1)
 const windowWidth = ref(null)
-const { cat } = useRoute().params
 
 const handleChange = async (data) => {
-    await useFetch(`http://localhost:8800/api/news?cat=${cat}&page=${data}`, { key: cat })
+    await useFetch(`http://localhost:8800/api/news?cat=${tag}&page=${data}`, { key: tag })
 }
 
 const showPageSize = computed(() => {

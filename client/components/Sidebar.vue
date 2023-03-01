@@ -1,86 +1,16 @@
 <template>
     <div id="sidebar">
         <van-list class="list-menu flex flex-col">
-            <van-cell class="list-menu__item" :icon="item.icon" v-for="item in list" :key="item" :title="item.title"
-                :to="item.path" />
+            <van-cell class="list-menu__item" v-for="item in routes" :key="item" :to="item.path">
+                <i class="material-icons">{{ item.icon }}</i>
+                <p>{{ item.title }}</p>
+            </van-cell>
         </van-list>
     </div>
 </template>
-<!-- class="max-[1000px]:hidden" -->
 
 <script setup>
-const list = [
-    {
-        icon: 'shop',
-        title: 'Công nghệ mới',
-        path: '/cats/cong-nghe-moi',
-    },
-    {
-        icon: 'shop',
-        title: 'Phần mềm hữu ích',
-        path: '/cats/phan-mem-huu-ich'
-    },
-    {
-        icon: 'shop',
-        title: 'Khoa học máy tính',
-        path: '/cats/khoa-hoc-may-tinh'
-    },
-    {
-        icon: 'card',
-        title: 'Phát minh khoa học',
-        path: '/cats/phat-minh-khoa-hoc'
-    },
-    {
-        icon: 'shop',
-        title: 'AI - Trí tuệ nhân tạo',
-        path: '/cats/ai-tri-tuu-nhan-tao'
-    },
-    {
-        icon: 'shop',
-        title: 'Khám phá khoa học',
-        path: '/cats/kham-pha-khoa-hoc'
-    },
-    {
-        icon: 'shop',
-        title: 'Sinh vật học',
-        path: '/cats/sinh-vat-hoc'
-    },
-    {
-        icon: 'shop',
-        title: 'Khảo cổ học',
-        path: '/cats/khao-co-hoc'
-    },
-    {
-        icon: 'shop',
-        title: 'Đại dương học',
-        path: '/cats/dai-duong-hoc'
-    },
-    {
-        icon: 'shop',
-        title: 'Thế giới động vật',
-        path: '/cats/the-gioi-dong-vat'
-    },
-    {
-        icon: 'shop',
-        title: 'Danh nhân thế giới',
-        path: '/cats/danh-nhan-the-gioi'
-    },
-    {
-        icon: 'shop',
-        title: 'Khoa học vũ trụ',
-        path: '/cats/Khoa-hoc-vu-tru'
-    },
-    {
-        icon: 'shop',
-        title: '1001 bí ẩn',
-        path: '/cats/1001-bi-an'
-    },
-    {
-        icon: 'shop',
-        title: 'Danh nhân thế giới',
-        path: '/cats/danh-nhan-the-gioi'
-    },
-];
+import { routes } from '../utils/seed-data/index.js'
 </script>
 
 <style  scoped>
@@ -94,10 +24,18 @@ const list = [
     cursor: pointer;
 }
 
-.list-menu__item:hover {
-    color: #008000;
+:deep .list-menu__item .van-cell__value {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 3px;
+    font-weight: 400;
+    color: black;
 }
 
+:deep .list-menu__item .van-cell__value:hover {
+    color: #008000;
+}
 :deep .van-list .van-cell__title {
     font-size: 16px;
 }

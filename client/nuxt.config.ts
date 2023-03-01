@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     css: [
         // 'tailwindcss/dist/tailwind.min.css',
         '~/assets/css/tailwind.css'
-      ],
+    ],
     app: {
         head: {
             title: 'KhoaHoc.tv: Khoa học - Công nghệ - Tri Thức - Khám phá',

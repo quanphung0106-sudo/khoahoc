@@ -1,22 +1,18 @@
 <template>
     <div class="flex items-center gap-1">
         <NuxtLink href="/" class="h-6"><i class="material-icons">home</i></NuxtLink>
-        <div v-for="(route, index) in routes" :key="index" class="flex items-center gap-1">
+        <div class="flex items-center gap-1">
             <i class="material-icons text-xs text-[#ccc]">arrow_forward_ios</i>
-            <NuxtLink :href="route.path" class="hover:text-[#00796b]">
-                <span class="text-[14px]">{{ route.title }}</span>
+            <NuxtLink :href="`/cats/${breadcrumbs}`" class="hover:text-[#00796b]">
+                <span class="text-[14px]">{{ breadcrumbs }}</span>
             </NuxtLink>
         </div>
     </div>
 </template>
 
 <script setup>
-const routes = [
-    {
-        path: '/cong-nghe-moi',
-        title: 'Công nghệ mới'
-    },
-]
+const breadcrumbs = useRoute().fullPath.split('/').filter((segment) => segment !== '')[1]
+
 </script>
 
 <style scoped>

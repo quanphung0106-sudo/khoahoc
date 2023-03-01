@@ -1,7 +1,10 @@
 <template>
     <div>
+        <h1 :class="{ 'rightbar-title': header }">{{ header ? header : '' }}</h1>
         <div class="card__container">
-            <NuxtLink v-for="(data, index) in list" :key="index" :href="data.path" class="card__link">
+            <NuxtLink v-for="(data, index) in list" :key="index"
+                :href="tag !== undefined && tag ? `/cats/${tag}/${data._id}` : `/cats/${data.cat}/${data._id}`"
+                class="card__link">
                 <van-card :class="{ 'van-card__res': data.desc }" :title="data.title" :thumb="data.thumb"
                     :desc="data.desc ? data.desc : ''" />
             </NuxtLink>
@@ -10,10 +13,18 @@
 </template>
   
 <script setup>
-const { list } = defineProps(['list']);
+const { list, tag, header } = defineProps(['list', 'tag', 'header']);
 </script>
 
 <style  scoped>
+.rightbar-title {
+    font-size: 20px;
+    color: #00796b;
+    border-bottom: 1px solid;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
 .van-card {
     padding: 10px 0;
     background-color: #ffffff;

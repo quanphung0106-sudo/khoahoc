@@ -8,6 +8,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 const { list, handleData } = defineProps(['list', 'handleData'])
+
 const limitElement = ref(5);
 const listData = computed(() => {
     const newArr = list.slice(0, limitElement.value)
