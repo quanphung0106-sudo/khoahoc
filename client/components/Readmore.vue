@@ -8,7 +8,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 const { list, handleData } = defineProps(['list', 'handleData'])
-const limitElement = ref(2);
+const limitElement = ref(5);
 const listData = computed(() => {
     const newArr = list.slice(0, limitElement.value)
     handleData(newArr)
@@ -17,9 +17,9 @@ const listData = computed(() => {
 
 const handleClick = () => {
     if (list.length > limitElement.value) {
-        limitElement.value += 2;
+        limitElement.value += 5;
     } else {
-        limitElement.value = 2;
+        limitElement.value = 5;
     }
 }
 </script>

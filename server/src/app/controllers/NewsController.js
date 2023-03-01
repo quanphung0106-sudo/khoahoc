@@ -12,20 +12,34 @@ const createNew = async (req, res) => {
 };
 
 const getAll = async (req, res) => {
-  const { cat } = req.query;
+  const { cat, page, limit } = req.query;
+  const limitPerPage = limit ?? 5;
+  const total = await News.countDocuments();
+
+  const query = {};
+  if (cat) {
+    query.cat = cat;
+  }
+
   try {
-    const getAllNews = await News.find();
     if (cat) {
-      getAllNews.map((newItem) => {
-        if (newItem) {
-          const getCatType = newItem.category.filter((data) => {
-            return cat === data.catType;
-          });
-          return res.status(200).json(getCatType);
-        }
+      const totalCat = await News.countDocuments(query);
+      const getAllNews = await News.find(query)
+        .skip((page && parseInt(page) - 1) * parseInt(limitPerPage))
+        .limit(parseInt(limitPerPage));
+      return res.status(200).json({
+        data: getAllNews,
+        total: totalCat,
+        limit: parseInt(limitPerPage),
       });
     } else {
-      return res.status(200).json(getAllNews);
+      const getAllNews = await News.find()
+        .skip((page && parseInt(page) - 1) * parseInt(limitPerPage))
+        .limit(parseInt(limitPerPage));
+      console.log(getAllNews);
+      return res
+        .status(200)
+        .json({ data: getAllNews, total, limit: parseInt(limitPerPage) });
     }
   } catch (err) {
     return res.status(500).json(err);
@@ -64,12 +78,10 @@ const addStudent = async (req, res) => {
   }
 };
 
-const getClass = async (req, res) => {
+const getAnPost = async (req, res) => {
   try {
-    const myClass = await Class.findById({ _id: req.params.id }).populate(
-      "students"
-    );
-    return res.status(200).json(myClass);
+    const post = await News.findById({ _id: req.params.id });
+    return res.status(200).json(post);
   } catch (err) {
     return res.status(500).json(err);
   }
@@ -79,4 +91,5 @@ module.exports = {
   createNew,
   getAll,
   update,
+  getAnPost,
 };

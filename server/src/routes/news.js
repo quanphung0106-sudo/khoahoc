@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const ClassController = require("../app/controllers/NewsController");
+const NewsController = require("../app/controllers/NewsController");
 
-router.post("/", ClassController.createNew);
-router.get("/", ClassController.getAll);
+router.post("/", NewsController.createNew);
+router.get("/", NewsController.getAll);
+router.get("/:id", NewsController.getAnPost);
 // router.post("/add-student/:id", ClassController.addStudent);
 // router.get("/:id", ClassController.getClass);
 // router.put("/:id", ClassController.updateClass);

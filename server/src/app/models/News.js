@@ -3,28 +3,30 @@ const Schema = mongoose.Schema;
 
 const NewsSchema = new Schema(
   {
-    category: [
-      {
-        catType: String,
-        data: [
-          {
-            title: String,
-            img: String,
-            desc: String,
-            newContent: [
-              {
-                titleContent: String,
-                content: String,
-                img: {
-                  url: String,
-                  imgDesc: String,
-                },
-              },
-            ],
-          },
-        ],
-      },
-    ],
+    title: {
+      type: String,
+      required: true,
+    },
+    desc: {
+      type: String,
+      required: true,
+    },
+    thumb: {
+      type: String,
+    },
+    imgDesc: {
+      type: String
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+    cat: {
+      type: String,
+    },
+    rating: {
+      type: Number,
+    },
   },
   {
     timestamps: true,

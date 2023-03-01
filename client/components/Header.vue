@@ -12,10 +12,14 @@
 
                     <div v-if="!showInputField" class="header-logo_content">
                         <div class="max-[479px]:hidden">
-                            <img src="https://khoahoc.tv/themes/default/images/logo.png" alt="logo">
+                            <NuxtLink href="/">
+                                <img src="https://khoahoc.tv/themes/default/images/logo.png" alt="logo">
+                            </NuxtLink>
                         </div>
                         <div class="min-[480px]:hidden">
-                            <img src="https://khoahoc.tv/themes/default/images/logo.white.png" alt="logo">
+                            <NuxtLink href="/">
+                                <img src="https://khoahoc.tv/themes/default/images/logo.white.png" alt="logo">
+                            </NuxtLink>
                         </div>
                     </div>
                     <van-cell v-if="!showInputField" class="header-popup__action" @click="showPopup">
@@ -99,7 +103,7 @@ const showPopup = () => {
 };
 
 const handleShowInputField = () => {
-    console.log(showInputField.value)
+    // console.log(showInputField.value)
     showInputField.value = !showInputField.value;
 };
 

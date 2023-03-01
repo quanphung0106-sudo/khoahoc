@@ -13,72 +13,72 @@ const list = [
     {
         icon: 'shop',
         title: 'Công nghệ mới',
-        path: '/cong-nghe-moi',
+        path: '/cats/cong-nghe-moi',
     },
     {
         icon: 'shop',
         title: 'Phần mềm hữu ích',
-        path: '/phan-mem-huu-ich'
+        path: '/cats/phan-mem-huu-ich'
     },
     {
         icon: 'shop',
         title: 'Khoa học máy tính',
-        path: '/khoa-hoc-may-tinh'
+        path: '/cats/khoa-hoc-may-tinh'
     },
     {
         icon: 'card',
         title: 'Phát minh khoa học',
-        path: '/phat-minh-khoa-hoc'
+        path: '/cats/phat-minh-khoa-hoc'
     },
     {
         icon: 'shop',
         title: 'AI - Trí tuệ nhân tạo',
-        path: '/ai-tri-tuu-nhan-tao'
+        path: '/cats/ai-tri-tuu-nhan-tao'
     },
     {
         icon: 'shop',
         title: 'Khám phá khoa học',
-        path: '/kham-pha-khoa-hoc'
+        path: '/cats/kham-pha-khoa-hoc'
     },
     {
         icon: 'shop',
         title: 'Sinh vật học',
-        path: '/sinh-vat-hoc'
+        path: '/cats/sinh-vat-hoc'
     },
     {
         icon: 'shop',
         title: 'Khảo cổ học',
-        path: '/khao-co-hoc'
+        path: '/cats/khao-co-hoc'
     },
     {
         icon: 'shop',
         title: 'Đại dương học',
-        path: '/dai-duong-hoc'
+        path: '/cats/dai-duong-hoc'
     },
     {
         icon: 'shop',
         title: 'Thế giới động vật',
-        path: '/the-gioi-dong-vat'
+        path: '/cats/the-gioi-dong-vat'
     },
     {
         icon: 'shop',
         title: 'Danh nhân thế giới',
-        path: '/danh-nhan-the-gioi'
+        path: '/cats/danh-nhan-the-gioi'
     },
     {
         icon: 'shop',
         title: 'Khoa học vũ trụ',
-        path: '/Khoa-hoc-vu-tru'
+        path: '/cats/Khoa-hoc-vu-tru'
     },
     {
         icon: 'shop',
         title: '1001 bí ẩn',
-        path: '/1001-bi-an'
+        path: '/cats/1001-bi-an'
     },
     {
         icon: 'shop',
         title: 'Danh nhân thế giới',
-        path: '/danh-nhan-the-gioi'
+        path: '/cats/danh-nhan-the-gioi'
     },
 ];
 </script>
@@ -96,6 +96,10 @@ const list = [
 
 .list-menu__item:hover {
     color: #008000;
+}
+
+:deep .van-list .van-cell__title {
+    font-size: 16px;
 }
 
 @media only screen and (max-width: 1279px) {

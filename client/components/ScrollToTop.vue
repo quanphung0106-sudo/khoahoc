@@ -1,6 +1,6 @@
 <template>
     <div>
-        <van-button id="scroll-to-top" @click="handleClick">
+        <van-button v-if="isScroll" id="scroll-to-top" @click="handleClick">
             <i class="material-icons">expand_less</i>
         </van-button>
     </div>
@@ -9,9 +9,15 @@
 import { ref, onMounted } from 'vue';
 
 const isScroll = ref(false);
+
 const handleScroll = () => {
-    if (window.scrollY >= 100) isScroll.value = true;
+    if (window.scrollY >= 100) {
+        isScroll.value = true
+    } else {
+        isScroll.value = false
+    };
 }
+
 
 const handleClick = () => {
     window.scrollTo({
